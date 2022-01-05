@@ -1,4 +1,6 @@
-function Number({ num }) {
+import React from "react";
+
+function Number({ num }: { num: number }) {
   return <div>このページは{num}番目のページです．</div>;
 }
 
@@ -8,8 +10,7 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params }) {
-  // propsを通じてpostをページに渡す
+export async function getStaticProps({ params }: { params: { id: string } }) {
   return { props: { num: params.id } };
 }
 
